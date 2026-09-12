@@ -3,8 +3,15 @@ import { Link } from "react-router-dom";
 import { Code2 } from "lucide-react";
 
 export default function LandingPage() {
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-amber-50/40 font-sans p-4 md:p-8 flex items-center justify-center">
+    <div id="home" className="min-h-screen bg-amber-50/40 font-sans p-4 md:p-8 flex items-center justify-center">
       <div className="max-w-6xl w-full bg-white rounded-3xl p-6 md:p-10 border border-amber-200/60 shadow-xs flex flex-col justify-between space-y-8">
         
         {/* Top Navbar */}
@@ -17,10 +24,27 @@ export default function LandingPage() {
           </div>
 
           <div className="hidden md:flex items-center gap-6 text-xs font-bold text-amber-900/70">
-            <a href="#home" className="text-amber-950 font-extrabold">Home</a>
-            <a href="#projects" className="hover:text-amber-950 transition-colors">Projects</a>
-            <a href="#features" className="hover:text-amber-950 transition-colors">Features</a>
-            <a href="#about" className="hover:text-amber-950 transition-colors">About</a>
+            <button
+              onClick={() => scrollToSection("home")}
+              className="text-amber-950 font-extrabold cursor-pointer"
+            >
+              Home
+            </button>
+            <Link to="/discover" className="hover:text-amber-950 transition-colors">
+              Projects
+            </Link>
+            <button
+              onClick={() => scrollToSection("features")}
+              className="hover:text-amber-950 transition-colors cursor-pointer"
+            >
+              Features
+            </button>
+            <button
+              onClick={() => scrollToSection("about")}
+              className="hover:text-amber-950 transition-colors cursor-pointer"
+            >
+              About
+            </button>
           </div>
 
           <div className="flex items-center gap-2">
@@ -67,7 +91,7 @@ export default function LandingPage() {
           </div>
 
           {/* Feature Highlight Card */}
-          <div className="bg-amber-100/40 border border-amber-200/60 rounded-2xl p-8 text-center space-y-3">
+          <div id="features" className="bg-amber-100/40 border border-amber-200/60 rounded-2xl p-8 text-center space-y-3">
             <div className="w-16 h-16 bg-amber-200/60 rounded-2xl flex items-center justify-center mx-auto text-amber-950">
               <Code2 className="w-8 h-8" />
             </div>
@@ -79,7 +103,7 @@ export default function LandingPage() {
         </div>
 
         {/* Workflow Steps Ribbon */}
-        <div className="bg-amber-50/60 border border-amber-200/60 rounded-2xl p-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div id="about" className="bg-amber-50/60 border border-amber-200/60 rounded-2xl p-4 grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-xl bg-amber-400/30 text-amber-950 font-black text-xs flex items-center justify-center shrink-0">01</div>
             <div>
