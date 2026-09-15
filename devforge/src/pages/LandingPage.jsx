@@ -20,7 +20,7 @@ export default function LandingPage() {
             <div className="w-9 h-9 rounded-xl bg-amber-400 flex items-center justify-center text-amber-950 shadow-xs">
               <Code2 className="w-5 h-5" />
             </div>
-            <span className="text-xl font-black text-amber-950 tracking-tight">DevForge</span>
+            <span className="text-xl font-black text-amber-950 tracking-tight">SkillConnect</span>
           </div>
 
           <div className="hidden md:flex items-center gap-6 text-xs font-bold text-amber-900/70">
@@ -72,7 +72,7 @@ export default function LandingPage() {
               <span className="text-amber-600">Create Impact.</span>
             </h1>
             <p className="text-xs md:text-sm text-amber-900/70 font-medium leading-relaxed">
-              DevForge helps developers and students find the right collaborators, build real-world software projects, and level up their portfolios.
+              SkillConnect helps developers and students find the right collaborators, build real-world software projects, and level up their portfolios.
             </p>
             <div className="flex items-center gap-3 pt-2">
               <Link

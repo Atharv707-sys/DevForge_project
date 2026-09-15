@@ -1,32 +1,36 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-// Placeholder component for Dashboard/Discover if not created yet
-const PlaceholderPage = ({ title }) => (
-  <div className="min-h-screen bg-amber-50/40 p-8 flex flex-col items-center justify-center font-sans">
-    <h1 className="text-2xl font-black text-amber-950 mb-2">{title}</h1>
-    <p className="text-xs font-semibold text-amber-800/70">Page content coming next!</p>
-  </div>
-);
+// Layout
+import AppLayout from './components/layout/AppLayout';
+
+// Pages
+import LandingPage from './pages/LandingPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import DashboardPage from './pages/DashboardPage';
+import DiscoverPage from './pages/DiscoverPage';
+import ProjectDetailPage from './pages/ProjectDetailPage';
+import CreateProjectPage from './pages/CreateProjectPage';
+import ApplicationPage from './pages/ApplicationPage';
 
 export default function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        
-        {/* Placeholder routes until components are built */}
-        <Route path="/dashboard" element={<PlaceholderPage title="Dashboard" />} />
-        <Route path="/discover" element={<PlaceholderPage title="Discover Projects" />} />
+    <Routes>
+      {/* Public Routes */}
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
 
-        {/* Catch-all redirect to home page to prevent blank screens */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </Router>
+      {/* Main App Routes */}
+      <Route element={<AppLayout />}>
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/discover" element={<DiscoverPage />} />
+        <Route path="/projects/create" element={<CreateProjectPage />} />
+        <Route path="/applications" element={<ApplicationPage />} />
+        <Route path="/projects/:id/applications" element={<ApplicationPage />} />
+        <Route path="/projects/:id" element={<ProjectDetailPage />} />
+      </Route>
+    </Routes>
   );
 }

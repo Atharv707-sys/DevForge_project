@@ -18,7 +18,7 @@ export default function RegisterPage() {
         <div className="w-9 h-9 rounded-xl bg-amber-400 flex items-center justify-center text-amber-950 shadow-xs">
           <Code2 className="w-5 h-5" />
         </div>
-        <span className="text-xl font-black text-amber-950 tracking-tight">DevForge</span>
+        <span className="text-xl font-black text-amber-950 tracking-tight">SkillConnect</span>
       </Link>
 
       {/* Registration Form Container */}

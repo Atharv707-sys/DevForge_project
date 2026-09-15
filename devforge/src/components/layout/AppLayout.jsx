@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, Outlet } from "react-router-dom";
 import { 
   LayoutDashboard, 
   FolderKanban, 
@@ -13,12 +13,12 @@ import {
   Plus
 } from "lucide-react";
 
-export default function AppLayout({ children, user, notificationsCount = 0 }) {
+export default function AppLayout({ user, notificationsCount = 0 }) {
   const location = useLocation();
 
   const navItems = [
     { label: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
-    { label: "Projects", path: "/projects", icon: FolderKanban },
+    { label: "Projects", path: "/discover", icon: FolderKanban },
     { label: "Applications", path: "/applications", icon: Inbox },
     { label: "My Tasks", path: "/workspace/1/tasks", icon: CheckSquare },
     { label: "Messages", path: "/messages", icon: MessageSquare },
@@ -38,13 +38,13 @@ export default function AppLayout({ children, user, notificationsCount = 0 }) {
         <div className="space-y-6">
           <Link to="/" className="flex items-center gap-2.5 px-3 py-1">
             <div className="bg-amber-950 text-amber-400 font-black rounded-xl w-9 h-9 flex items-center justify-center text-sm shadow-sm">
-              SC
+              DF
             </div>
-            <span className="text-xl font-extrabold tracking-tight text-amber-950">SkillConnect</span>
+            <span className="text-xl font-extrabold tracking-tight text-amber-950">DevForge</span>
           </Link>
 
           <Link 
-            to="/create-project"
+            to="/projects/create"
             className="flex items-center justify-center gap-2 w-full bg-amber-950 hover:bg-amber-900 text-amber-300 text-sm font-bold py-2.5 px-4 rounded-xl shadow-sm transition-all"
           >
             <Plus className="w-4 h-4 stroke-[3]" /> Create Project
@@ -109,7 +109,10 @@ export default function AppLayout({ children, user, notificationsCount = 0 }) {
           </div>
         </header>
 
-        <main className="p-6 flex-1">{children}</main>
+        {/* Outlet renders the active page route */}
+        <main className="p-6 flex-1">
+          <Outlet />
+        </main>
       </div>
     </div>
   );
